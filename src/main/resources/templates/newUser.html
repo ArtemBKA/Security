@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NewUserPage</title>
+    <style>
+        body {
+            font-size: x-large;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid;
+            align-content: center;
+        }
+
+        tr:hover td {
+            background-color: lightblue;
+        }
+
+        .no-border {
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+<form th:method="POST" th:action="@{/admin}" th:object="${user}">
+    <label for="name">First Name: </label>
+    <input type="text" th:field="*{firstName}" id="name" required>
+    <br>
+    <br>
+    <label for="last_name">Last Name: </label>
+    <input type="text" th:field="*{lastName}" id="last_name" required>
+    <br>
+    <br>
+    <label for="email">Email: </label>
+    <input type="email" th:field="*{username}" id="email" required>
+    <br>
+    <br>
+    <label for="password">Password: </label>
+    <input type="password" th:field="*{password}" id="password" required>
+    <br>
+    <br>
+    <label for="age">Age: </label>
+    <input type="text" th:field="*{age}" id="age" required>
+
+
+    <label>Role:
+        <input type="checkbox" name="roles"
+               th:each="role : ${rolesAdd}"
+               th:value="${role.id}"
+               th:text="${role.name}"
+        />
+    </label>
+    <br>
+    <br>
+    <input type="submit" value="Add">
+</form>
+
+</body>
+</html>

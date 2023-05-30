@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>UsersPage</title>
+    <style>
+        body {
+            font-size: x-large;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid;
+            align-content: center;
+        }
+
+        tr:hover td {
+            background-color: lightblue;
+        }
+
+        .no-border {
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+<h1 th:text="${user.getFirstName()} +' '+ ${user.getLastName()}"/>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Age</th>
+        <th scope="col">Role</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${user.getId()}"></td>
+        <td th:text="${user.getFirstName()}"></td>
+        <td th:text="${user.getLastName()}"></td>
+        <td th:text="${user.getUsername()}"></td>
+        <td th:text="${user.getAge()}"></td>
+        <td th:text="${user.getRoles()}"></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<form th:action="@{/logout}" th:method="POST" target="_self">
+    <button>Logout</button>
+</form>
+</body>
+</html>
+
